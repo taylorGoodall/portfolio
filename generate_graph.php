@@ -1,4 +1,6 @@
 <?php
+//this file required Jpgraph to run + a databse
+
 require_once ('src/jpgraph.php');
 require_once ('src/jpgraph_bar.php');
 $servername = "localhost";
@@ -37,17 +39,6 @@ else if (sizeof($teamMembers == 9)){
 }
 }
 */
-
-
-
-
-//$teamCount = count($teamMembers);
-//echo "</br $i";
-//$teamMembers[9] = "Hello";
-
-//echo "I like " . $teamMembers[0] . ", " . $teamMembers[1] . " and " . $teamMembers[9] . ".";
-
-
 
 
 
@@ -97,13 +88,7 @@ $npsScore = ceil($npsScore);
 return $npsScore;
 $conn->close();
 }
-/*
-echo "Jimmys NPS:  "; echo getNPS('JimmyBarnes');
-echo "</br>";
-echo "Taylors NPS:  "; echo getNPS('Taylor Goodall');
-echo "</br>";
-echo "Shelbys' NPS ";   echo getNPS('Shelby Davies');
-*/
+
 //need another array/function to get all team members/agents from table to they can be used below
 $agent = array();
 $agent[0] = getNPS($teamMembers[0]);
@@ -147,31 +132,7 @@ $graph->title->SetFont(FF_FONT1,FS_BOLD);
 $graph->yaxis->title->SetFont(FF_FONT1,FS_BOLD);
 $graph->xaxis->title->SetFont(FF_FONT1,FS_BOLD);
 
-// Display the graph
+// Display the graph in the cache
 $graph->Stroke();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
