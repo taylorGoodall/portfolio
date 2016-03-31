@@ -10,15 +10,15 @@
 <?php
 
 require_once 'Classes/PHPExcel.php';
-
+//declare variables
 $inputFileName = './Import_data.xlsx';
-$colForTitle = 'A';
-$colForAuthor = 'B';
-$colForState = 'C';
+$colForID = 'A';
+$colForAgent = 'B';
+$colForTeam = 'C';
 $colForNPS = 'D';
 $colForDate = 'E';
-$books = array();
 
+//initialise the excel reader
 $objReader = PHPExcel_IOFactory::createReader('Excel2007');
 $objReader->setReadDataOnly(true);
 $objPHPExcel = $objReader->load($inputFileName);
@@ -27,26 +27,23 @@ $highestRow = $objWorksheet->getHighestRow();
 $customerID = array();
 $team = array();
 $NPS = array();
- $Agent = array();
-
- $servername = "localhost";
+$Agent = array();
+//declare variables for MYSQL connection
+$servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "NPS";
-
-
-
-
-
+//connect to databse
  $conn = new mysqli($servername, $username, $password,$dbname);
+ //loop through the worksheet and inset the Excel worksheet into an array
 for ($row = 2; $row <= $highestRow; $row++) {
 
-    $customerID[$row] = $objPHPExcel->getActiveSheet()->getCell($colForTitle.$row)->getValue();
-    $Agent[$row] = $objPHPExcel->getActiveSheet()->getCell($colForAuthor.$row)->getValue();
-    $team[$row] = $objPHPExcel->getActiveSheet()->getCell($colForState.$row)->getValue();
+    $customerID[$row] = $objPHPExcel->getActiveSheet()->getCell($colForID.$row)->getValue();
+    $Agent[$row] = $objPHPExcel->getActiveSheet()->getCell($colForAgent.$row)->getValue();
+    $team[$row] = $objPHPExcel->getActiveSheet()->getCell($colForTeam.$row)->getValue();
     $NPS[$row] = $objPHPExcel->getActiveSheet()->getCell($colForNPS.$row)->getValue();
        
-
+//SQL Query for inserting array values into Database
     $sql = "INSERT INTO results (CustomerID, Agent,Team,NPS,ddate)
 VALUES ('$customerID[$row]', '$Agent[$row]', '$team[$row]','$NPS[$row]','02/03/2016')";
 
@@ -57,79 +54,12 @@ if ($conn->query($sql) === TRUE) {
 }
 
 
-
-
-
-
-
-
-
-
-
 }
 $conn->close();
-
-
-//use array values to insert into Database with Row
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "NPS";
-
-/*
-// Create connection
-$conn = new mysqli($servername, $username, $password,$dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-
-$sql = "INSERT INTO results (CustomerID, Agent,Team,NPS,ddate)
-VALUES ('$customerID[11]', '$Agent[11]', '$team[11]','10','02/03/2016')";
-
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-$conn->close();
-
-
-//echo ($customerID[11]);
-//echo ($Agent[11]);
-//echo ($team[11]);
-
- */
-//include "./pages.php";
-
-class Book{
-    private $title;
-    private $author;
-    private $state;
-
-    public function __construct($title, $author, $state) {
-        $this->title = $title;
-        $this->author = $author;
-        $this->state = $state;
-    }
-
-    public function getTitle(){
-        return $this->title;
-    }
-
-    public function getAuthor(){
-        return $this->author;
-    }
-
-    public function getState(){
-        return $this->state;
     }
 }
 ?>
+//Bootstrap banner to show success of upload to database
   <div class="alert alert-success">
     <strong>Success!</strong> Your teams NPS results Have been successfully Uploaded.
   </div>
