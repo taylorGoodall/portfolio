@@ -1,6 +1,8 @@
 <?php
+//Import JPgraph into script.
 require_once ('src/jpgraph.php');
 require_once ('src/jpgraph_bar.php');
+//declare variables
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -8,6 +10,8 @@ $dbname = "NPS";
 
 $ManagersTeam = 'Eight-Bitt';
 $teamMembers = array();
+
+//connect to databse & query the results.
 $conn = new mysqli($servername, $username, $password, $dbname);
 //results = new variable based on who is the manager
 $SQL = "SELECT Agent_Name FROM `$ManagersTeam`";
@@ -21,8 +25,6 @@ if ($result->num_rows>0) {
 
     }
 }
-//echo $teamMembers;
-//echo sizeof($teamMembers);
 
 //Basic theroy on how to add Arrays of results to draw graph depending on size of team
 /*
@@ -38,19 +40,7 @@ else if (sizeof($teamMembers == 9)){
 }
 */
 
-
-
-
-//$teamCount = count($teamMembers);
-//echo "</br $i";
-//$teamMembers[9] = "Hello";
-
-//echo "I like " . $teamMembers[0] . ", " . $teamMembers[1] . " and " . $teamMembers[9] . ".";
-
-
-
-
-
+//function for calculating NPS scores for each agent
 function getNPS($agentName) {
     $servername = "localhost";
 $username = "root";
@@ -63,9 +53,10 @@ if ($conn->connect_error) {
 } else {
 
 }
-
+//query databse for all results linked to the Agent
 $sql = "SELECT NPS FROM results WHERE Agent='$agentName'";
 $result = $conn->query($sql);
+//initialise variables for calculating scores
 $number = 0;
 $promoter = 0;
 $detractor = 0;
@@ -91,20 +82,16 @@ else {
 } else {
 
 }
+//calculate total surveys
 $totalSurveys = ($promoter + $passive + $detractor);
 $npsScore = ($promoter/ $totalSurveys) * 100;
 $npsScore = ceil($npsScore);
+//return value of the score.
 return $npsScore;
 $conn->close();
 }
-/*
-echo "Jimmys NPS:  "; echo getNPS('JimmyBarnes');
-echo "</br>";
-echo "Taylors NPS:  "; echo getNPS('Taylor Goodall');
-echo "</br>";
-echo "Shelbys' NPS ";   echo getNPS('Shelby Davies');
-*/
-//need another array/function to get all team members/agents from table to they can be used below
+
+//initialise & populate array - need a dynamic way due to change in size of team
 $agent = array();
 $agent[0] = getNPS($teamMembers[0]);
 $agent[1] = getNPS($teamMembers[1]);
@@ -114,7 +101,7 @@ $agent[4]  = getNPS($teamMembers[4]);
 $agent[5] = getNPS($teamMembers[5]);
 
 
-
+//initialise data for that will be graphed
 $datay=array($agent[0],$agent[1],$agent[2],$agent[3],$agent[4],$agent[5]);
   $teams=array($teamMembers[0],$teamMembers[1],$teamMembers[2],$teamMembers[3],$teamMembers[4],$teamMembers[5]);
 
@@ -147,31 +134,8 @@ $graph->title->SetFont(FF_FONT1,FS_BOLD);
 $graph->yaxis->title->SetFont(FF_FONT1,FS_BOLD);
 $graph->xaxis->title->SetFont(FF_FONT1,FS_BOLD);
 
-// Display the graph
+// Display the graph in cache 
+//to use graph image wrap in <img> tag
 $graph->Stroke();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
