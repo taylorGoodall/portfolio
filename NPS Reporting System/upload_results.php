@@ -1,3 +1,5 @@
+
+
 <head>
   <title>Upload Results</title>
   <meta charset="utf-8">
@@ -8,6 +10,10 @@
 </head>
 
 <?php
+
+//PHP Script to Read through and Excel Spredgsheet then insert it into a MYSQL DATABASE. 
+//Inlucded with Bootstrap for a Success Banner 
+// Author: Taylor Goodall
 
 require_once 'Classes/PHPExcel.php';
 //declare variables
