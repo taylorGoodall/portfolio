@@ -1,0 +1,151 @@
+.navbar-default {
+  background-color: #1C5D99;
+  color: #FFFFFF;
+  background-image: none;
+  background-repeat: no-repeat; }
+
+.navbar .nav > li > a {
+  float: none;
+  text-decoration: none;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  color: white; }
+
+.navbar {
+  margin-bottom: 0; }
+
+.navbar-brand {
+  float: none;
+  line-height: 19px;
+  padding: 9px 10px 11px;
+  text-decoration: none;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  text-decoration-color: white; }
+
+.background-picture {
+  width: 100vw;
+  height: 90vh;
+  background-image: url("/images/background.jpg");
+  background-size: cover; }
+
+.learn-more {
+  /* Button Background: */
+  top: 50vh;
+  left: 40vw;
+  position: relative;
+  text-align: center;
+  background: #1C5D99;
+  border-radius: 6px;
+  /* OK: */
+  font-family: AvenirNext-Bold;
+  font-size: 14px;
+  color: white;
+  line-height: 19px;
+  width: 300px;
+  height: 50px; }
+
+.layer-one {
+  width: 100vw;
+  height: 60vh;
+  background: #BBCDE5; }
+
+.layer-two {
+  width: 100vw;
+  height: 60vh;
+  background: #FFFFFF; }
+
+.header-text {
+  /* G R E A T  I D E A S: */
+  top: 45vh;
+  position: relative;
+  text-align: center;
+  font-family: AvenirNext-Bold;
+  font-size: 30px;
+  color: #F6F5F6;
+  line-height: 41px;
+  letter-spacing: 7px; }
+
+.help-text {
+  /* G R E A T  I D E A S: */
+  top: 200px;
+  text-align: center;
+  font-family: AvenirNext-Bold;
+  font-size: 30px;
+  color: #F6F5F6;
+  line-height: 41px;
+  letter-spacing: 7px; }
+
+.process-header {
+  /* M Y  P R O C E S S: */
+  top: 200px;
+  line-height: 41px;
+  text-align: center;
+  font-family: AvenirNext-Regular;
+  font-size: 30px;
+  letter-spacing: 7px; }
+
+.contact-header {
+  /* M Y  P R O C E S S: */
+  top: 200px;
+  line-height: 41px;
+  text-align: center;
+  font-family: AvenirNext-Regular;
+  font-size: 30px;
+  letter-spacing: 7px;
+  color: white; }
+
+.contact-text {
+  /* M Y  P R O C E S S: */
+  font-family: AvenirNext-Regular;
+  font-size: 15px;
+  letter-spacing: 4px;
+  color: white; }
+
+.process-points {
+  /* Coffee: */
+  line-height: 50px;
+  margin-left: 20px;
+  font-family: AvenirNext-Regular;
+  font-size: 24px;
+  color: #4A4A4A;
+  line-height: 44px;
+  text-align: center; }
+
+.help-text {
+  /* Coffee: */ }
+
+.process-first {
+  /* Coffee: */
+  font-family: AvenirNext-Regular;
+  font-size: 24px;
+  color: #4A4A4A;
+  line-height: 54px;
+  text-align: center; }
+
+.quote-text {
+  /* Coffee: */
+  margin-left: 20px;
+  font-family: AvenirNext-Regular;
+  font-size: 24px;
+  color: #4A4A4A;
+  text-align: center; }
+
+.layer-three {
+  width: 100vw;
+  height: 80vh;
+  background: #BBCDE5; }
+
+.photo {
+  display: block;
+  margin: auto;
+  border-radius: 50%;
+  height: 15vh;
+  width: 15vh;
+  border: white; }
+
+.layer-four {
+  width: 100vw;
+  height: 60vh;
+  background: #1C5D99; }
+
+.testing {
+  width: 71.42857%; }
